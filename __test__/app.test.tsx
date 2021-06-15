@@ -8,4 +8,9 @@ describe("App", () => {
       screen.getByRole("heading", { name: "Cinem app" })
     ).toBeInTheDocument();
   });
+
+  it("renders subtitle", () => {
+    render(<App />);
+    expect(screen.getByText("Reserve tickets easier")).toBeInTheDocument();
+  });
 });
