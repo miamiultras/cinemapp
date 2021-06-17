@@ -12,7 +12,7 @@ describe("Layout", () => {
 
   it("renders subtitle", () => {
     render(<Layout>{content}</Layout>);
-    expect(screen.getByText("Reserve tickets easier")).toBeInTheDocument();
+    expect(screen.getByText("Buy tickets easier")).toBeInTheDocument();
   });
 
   it("renders content", () => {

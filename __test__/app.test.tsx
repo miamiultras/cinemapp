@@ -12,6 +12,6 @@ describe("App", () => {
 
   it("renders subtitle", () => {
     render(<App moviesData={[MOVIE_FIXTURE]} />);
-    expect(screen.getByText("Reserve tickets easier")).toBeInTheDocument();
+    expect(screen.getByText("Buy tickets easier")).toBeInTheDocument();
   });
 });

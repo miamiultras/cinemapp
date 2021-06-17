@@ -11,7 +11,7 @@ export function Layout({
   home?: boolean;
 }) {
   return (
-    <div className="max-w-xl px-4 mt-12 mx-auto mb-24">
+    <div className="max-w-xl px-4 mx-auto py-12">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -30,13 +30,13 @@ export function Layout({
       <header className="flex flex-col items-center">
         <h2 className="text-6xl	mt-2">
           <Link href="/">
-            <a className="text-gray-800">
+            <a className="text-gray-800 font-bold">
               Cinem<span className="text-purple-600">app</span>
             </a>
           </Link>
         </h2>
         <p className="text-xl text-purple-600 font-semibold">
-          Reserve tickets easier
+          Buy tickets easier
         </p>
       </header>
       <main>{children}</main>
