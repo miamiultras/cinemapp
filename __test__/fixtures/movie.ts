@@ -7,4 +7,5 @@ export const MOVIE_FIXTURE: Movie = {
   rating: "10",
   year: "1969",
   imgSrc: "/images/test",
+  price: "9.99",
 };

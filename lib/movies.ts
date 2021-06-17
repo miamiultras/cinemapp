@@ -7,23 +7,20 @@ export type Movie = {
   rating: string;
   year: string;
   imgSrc: string;
+  price: string;
 };
 
 const generateFakeMovie: () => Movie = () => ({
   id: faker.datatype.uuid(),
   title: faker.lorem.words(),
   desc: faker.lorem.paragraph(),
-  rating: faker.datatype
-    .number({
-      min: 1,
-      max: 10,
-    })
-    .toString(),
+  rating: faker.finance.amount(1, 10, 1).toString(),
   year: faker.date.past().getFullYear().toString(),
   imgSrc: `/images/${Math.floor(Math.random() * 6) + 1}.jpg`,
+  price: faker.finance.amount(1, 10, 2).toString(),
 });
 
-const generateFakeMovieData = (length: number = 50) => {
+const generateFakeMovieData = (length: number = 10) => {
   let movies = [];
   for (let index = 0; index < length; index++) {
     movies.push(generateFakeMovie());
