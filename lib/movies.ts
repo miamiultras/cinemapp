@@ -1,29 +1,41 @@
 import faker from "faker";
-import movies from "../movies.json";
 
 export type Movie = {
   id: string;
-  name: string;
+  title: string;
   desc: string;
   rating: string;
-  rank: string;
-  link: string;
   year: string;
   imgSrc: string;
 };
 
-const mapMoviesData = (movies: Omit<Movie, "id" | "desc" | "imgSrc">[]) =>
-  movies.map((movie) => ({
-    ...movie,
-    id: faker.random.alphaNumeric(),
-    desc: faker.lorem.paragraph(),
-    imgSrc: `/images/${Math.floor(Math.random() * 6) + 1}.jpg`,
-  }));
+const generateFakeMovie: () => Movie = () => ({
+  id: faker.datatype.uuid(),
+  title: faker.lorem.words(),
+  desc: faker.lorem.paragraph(),
+  rating: faker.datatype
+    .number({
+      min: 1,
+      max: 10,
+    })
+    .toString(),
+  year: faker.date.past().getFullYear().toString(),
+  imgSrc: `/images/${Math.floor(Math.random() * 6) + 1}.jpg`,
+});
+
+const generateFakeMovieData = (length: number = 50) => {
+  let movies = [];
+  for (let index = 0; index < length; index++) {
+    movies.push(generateFakeMovie());
+  }
+  return movies;
+};
 
 export async function getMoviesData(delay = 1000): Promise<Movie[]> {
   return new Promise((res) => {
+    const movies = generateFakeMovieData();
     setTimeout(() => {
-      res(mapMoviesData(movies));
+      res(movies);
     }, delay + 500 * Math.random());
   });
 }
