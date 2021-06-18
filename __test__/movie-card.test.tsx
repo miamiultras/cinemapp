@@ -32,7 +32,7 @@ describe("MovieCard", () => {
   it("renders button", () => {
     render(<MovieCard {...MOVIE_FIXTURE} />);
     expect(
-      screen.getByRole("button", { name: "Buy ticket" })
+      screen.getByRole("link", { name: "Buy ticket" })
     ).toBeInTheDocument();
   });
 });

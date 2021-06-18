@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Movie } from "../lib/movies";
-import { Button } from "./button";
 
 export const MovieCard: React.FC<Movie> = ({
+  id,
   title,
   rating,
   desc,
@@ -37,7 +38,11 @@ export const MovieCard: React.FC<Movie> = ({
       </figcaption>
       <div className="flex items-center justify-end mt-6">
         <span className="font-semibold text-xl mr-4">${price}</span>
-        <Button name="Buy ticket" onClick={() => "buy ticket"} />
+        <Link href={`/movies/${id}`}>
+          <a className="text-md bg-purple-500 hover:bg-purple-700 text-white font-bold py-1 px-2 rounded">
+            Buy ticket
+          </a>
+        </Link>
       </div>
     </div>
   </figure>
