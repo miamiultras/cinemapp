@@ -10,8 +10,8 @@ export type Movie = {
   price: string;
 };
 
-const generateFakeMovie: () => Movie = () => ({
-  id: faker.datatype.uuid(),
+const generateFakeMovie: (id: string) => Movie = (id: string) => ({
+  id,
   title: faker.lorem.words(),
   desc: faker.lorem.paragraph(),
   rating: faker.finance.amount(1, 10, 1).toString(),
@@ -23,16 +23,29 @@ const generateFakeMovie: () => Movie = () => ({
 const generateFakeMovieData = (length: number = 10) => {
   let movies = [];
   for (let index = 0; index < length; index++) {
-    movies.push(generateFakeMovie());
+    movies.push(generateFakeMovie(index.toString()));
   }
   return movies;
 };
 
+const movies = generateFakeMovieData();
+
 export async function getMoviesData(delay = 1000): Promise<Movie[]> {
   return new Promise((res) => {
-    const movies = generateFakeMovieData();
     setTimeout(() => {
       res(movies);
     }, delay + 500 * Math.random());
   });
+}
+
+export function getAllMovieIds() {
+  return movies.map(({ id }: Movie) => ({
+    params: {
+      id,
+    },
+  }));
+}
+
+export function getMovieData(id: string): Movie {
+  return movies.find((movie: Movie) => movie.id === id)!;
 }
