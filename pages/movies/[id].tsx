@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { Layout } from "../../components";
+import { Layout, MovieDetails } from "../../components";
 import { Movie, getMovieData, getAllMovieIds } from "../../lib/movies";
 
 export default function MoviePage({ movieData }: { movieData: Movie }) {
@@ -9,10 +9,9 @@ export default function MoviePage({ movieData }: { movieData: Movie }) {
       <Head>
         <title>{movieData.title}</title>
       </Head>
-      <article>
-        <h1 className="text-3xl text-gray-700 my-8">{movieData.title}</h1>
-        <div className="text-gray-800"></div>
-      </article>
+      <section className="text-xl text-gray-800 pt-10">
+        <MovieDetails {...movieData} />
+      </section>
     </Layout>
   );
 }
