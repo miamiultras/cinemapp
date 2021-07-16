@@ -8,4 +8,7 @@ export const MOVIE_FIXTURE: Movie = {
   year: "1969",
   imgSrc: "/images/test",
   price: "9.99",
+  type: "2D",
+  subtitles: true,
+  roomNumber: 3
 };
