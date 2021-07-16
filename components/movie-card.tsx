@@ -11,6 +11,8 @@ export const MovieCard: React.FC<Movie> = ({
   imgSrc,
   price,
   year,
+  type,
+  subtitles,
 }) => (
   <figure className="flex bg-white shadow-lg rounded-xl h-62 p-4">
     <Image
@@ -29,7 +31,9 @@ export const MovieCard: React.FC<Movie> = ({
           </div>
         </div>
 
-        <div className="text-sm text-gray-400">Series</div>
+        <div className="text-sm text-gray-400">
+          {type} {subtitles ? "(subtitles)" : "(dubbing)"}
+        </div>
         <div className="text-lg text-gray-800">{year}</div>
 
         <p title={desc} className="text-gray-400 mt-2 line-clamp-3">

@@ -1,6 +1,6 @@
 import faker from "faker";
 
-export type Movie = {
+export interface Movie {
   id: string;
   title: string;
   desc: string;
@@ -8,6 +8,8 @@ export type Movie = {
   year: string;
   imgSrc: string;
   price: string;
+  type: string;
+  subtitles: boolean;
 };
 
 const generateFakeMovie: (id: string) => Movie = (id: string) => ({
@@ -18,6 +20,8 @@ const generateFakeMovie: (id: string) => Movie = (id: string) => ({
   year: faker.date.past().getFullYear().toString(),
   imgSrc: `/images/${Math.floor(Math.random() * 6) + 1}.jpg`,
   price: faker.finance.amount(1, 10, 2).toString(),
+  type: Math.random() > 0.5 ? '3D' : '2D',
+  subtitles: Math.random() > 0.5 ? true : false,
 });
 
 const generateFakeMovieData = (length: number = 10) => {
