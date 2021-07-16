@@ -10,6 +10,7 @@ export interface Movie {
   price: string;
   type: string;
   subtitles: boolean;
+  roomNumber: number;
 };
 
 const generateFakeMovie: (id: string) => Movie = (id: string) => ({
@@ -22,6 +23,7 @@ const generateFakeMovie: (id: string) => Movie = (id: string) => ({
   price: faker.finance.amount(1, 10, 2).toString(),
   type: Math.random() > 0.5 ? '3D' : '2D',
   subtitles: Math.random() > 0.5 ? true : false,
+  roomNumber: Math.floor(Math.random() * 5) + 1
 });
 
 const generateFakeMovieData = (length: number = 10) => {
